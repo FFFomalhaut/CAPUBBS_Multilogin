@@ -13,6 +13,8 @@
 
 (function() {
     'use strict';
+    /* eslint-disable no-multi-spaces */
+    /* globals $ */
 
     var from = $("input#from").val();
     from = from ? from : "/bbs/index";
