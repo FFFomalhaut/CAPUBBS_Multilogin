@@ -33,6 +33,13 @@
     $("input.button:first")[0].previousSibling.data=("\n    \n");
     $("input.button:last")[0].nextSibling.data=("\n    \n");
 
+    window.onload = function() {
+        // console.log(window.location.href);
+        if (window.location.href.includes("fromdesktop=1")) {
+            window.multilogin();
+        }
+    }
+
     window.multilogin = function() {
         var tip = $("#tip");
         tip.html("正在登录…");
