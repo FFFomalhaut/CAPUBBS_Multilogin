@@ -34,24 +34,24 @@
     $("input.button:last")[0].nextSibling.data=("\n    \n");
 
     window.multilogin = function() {
-        var index = users.length;
-        function Multilogin_single() {
+        var tip = $("#tip");
+        function Multilogin_single(index) {
             // console.log(index);
-            index--;
             if (index == -1) {
-                clearInterval(Interval_Multilogin);
-                window.location = from;
-            } else {
-                var [usrn, pswd] = users[index];
-                $.post("action.php",{
-                    username:usrn,
-                    password1:pswd,
-                })
-                // console.log(usrn,pswd);
+                window.location=from;
             }
+            var [usrn, pswd] = users[index];
+            $.post("action.php",{
+                username:usrn,
+                password1:pswd,
+            }).done(function() {
+                // console.log(`${index}:done`);
+                Multilogin_single(index-1);
+            })
         }
-        var Interval_Multilogin = setInterval(Multilogin_single, 2000);
-    };
+
+        Multilogin_single(users.length-1);
+    }
 
     // Your code here...
 })();
