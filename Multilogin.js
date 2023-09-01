@@ -35,9 +35,11 @@
 
     window.multilogin = function() {
         var tip = $("#tip");
+        tip.html("正在登录…");
         function Multilogin_single(index) {
             // console.log(index);
             if (index == -1) {
+                tip.append("<br>正在跳转…");
                 window.location=from;
             }
             var [usrn, pswd] = users[index];
@@ -46,6 +48,10 @@
                 password1:pswd,
             }).done(function() {
                 // console.log(`${index}:done`);
+                tip.html(usrn+" 已登录")
+                Multilogin_single(index-1);
+            }).fail(function() {
+                tip.html(usrn+" 登录失败");
                 Multilogin_single(index-1);
             })
         }
