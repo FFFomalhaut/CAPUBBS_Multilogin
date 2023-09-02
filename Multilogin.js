@@ -8,7 +8,7 @@
 // @icon         https://chexie.net/assets/images/capu.jpg
 // @grant        none
 // @require      https://chexie.net/assets/js/jquery.min.js
-// @require      file:///C:/Users/admin/Desktop/PlayWithBBS/Multilogin/getUsers.js
+// @require      file:///C:/Users/admin/Desktop/PlayWithBBS/Multilogin/users.js
 
 // ==/UserScript==
 
