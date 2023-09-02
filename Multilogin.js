@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         CAPUBBS Multilogin
 // @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  rt
+// @version      1.2.3
+// @description  修改了fromdesktop的判断方式
 // @author       To Dust
 // @match        https://*.chexie.net/bbs/login/*
 // @icon         https://chexie.net/assets/images/capu.jpg
