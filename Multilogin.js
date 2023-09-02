@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         CAPUBBS Multilogin
 // @namespace    http://tampermonkey.net/
-// @version      1.2.3
+// @version      1.3
 // @description  修改了fromdesktop的判断方式
 // @author       FFFomalhaut
 // @match        https://*.chexie.net/bbs/login/*
