@@ -8,19 +8,18 @@
 // @icon         https://chexie.net/assets/images/capu.jpg
 // @grant        none
 // @require      https://chexie.net/assets/js/jquery.min.js
-// @require	 file:///C:/Users/admin/Desktop/PlayWithBBS/Multilogin/getUsers.js
+// @require      file:///C:/Users/admin/Desktop/PlayWithBBS/Multilogin/getUsers.js
 
 // ==/UserScript==
 
 (function() {
     'use strict';
     /* eslint-disable no-multi-spaces */
-    /* globals $, Users */
-    // Users defined in @require!
+    /* globals $, users */
+    // users defined in @require!
 
     var from = $("input#from").val();
     from = from ? from : "/bbs/index";
-    
 
     var btn = $("<input type='button' value='全部登录' class='button' onclick='multilogin();'></input>");
     $("input.button:first").before(btn,"\n");
