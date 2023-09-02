@@ -2,7 +2,7 @@
 // @name         CAPUBBS Multilogin
 // @namespace    http://tampermonkey.net/
 // @version      1.3
-// @description  修改了fromdesktop的判断方式
+// @description  分离账号密码数据到本地
 // @author       FFFomalhaut
 // @match        https://*.chexie.net/bbs/login/*
 // @icon         https://chexie.net/assets/images/capu.jpg
