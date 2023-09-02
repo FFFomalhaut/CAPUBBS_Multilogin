@@ -35,7 +35,8 @@
 
     window.onload = function() {
         // console.log(window.location.href);
-        if (window.location.href.includes("fromdesktop=1")) {
+	var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.get("fromdesktop") == 1) {
             window.multilogin();
         }
     }
