@@ -15,11 +15,12 @@
 (function() {
     'use strict';
     /* eslint-disable no-multi-spaces */
-    /* globals $, getUsers */
+    /* globals $, Users */
+    // Users defined in @require!
 
     var from = $("input#from").val();
     from = from ? from : "/bbs/index";
-    var users = getUsers();
+    
 
     var btn = $("<input type='button' value='全部登录' class='button' onclick='multilogin();'></input>");
     $("input.button:first").before(btn,"\n");
