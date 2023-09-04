@@ -35,12 +35,15 @@
             });
         }
         function callback(data) {
-            if ( !data.includes("歸塵") ) {
+            data = data.slice(0, data.indexOf("\n\n\n"));   // 此处是防止有用户在Top100中，产生误判
+            if (!users.every((user) => {
+                return data.includes(user[0]);
+            })) { 
                 window.multilogin();
             } else {
                 var result = confirm("今天你签到过了！以主账号登录吗？");
                 if (result) {
-                    var [usrn, pswd] = users[0];
+                    var [usrn, pswd] = users[0];    // 确保主账号在users.js中的第一条
                     $.post("action.php",{
                         username:usrn,
                         password1:pswd,
@@ -64,13 +67,16 @@
             $.post("action.php",{
                 username:usrn,
                 password1:pswd,
-            }).done(function() {
+            }).done(function(data) {
                 // console.log(`${index}:done`);
-                tip.html(usrn+" 已登录")
-                Multilogin_single(index-1);
+                if (data == 0) {
+                    tip.html(usrn+" 已登录")
+                    Multilogin_single(index-1);
+                } else {
+                    tip.html(usrn+" 登录失败<br>"+data+"程序已中止。");
+                }
             }).fail(function() {
-                tip.html(usrn+" 登录失败");
-                Multilogin_single(index-1);
+                tip.html(usrn+" 登录失败<br>请求未响应，请重新登录");
             });
         }
         Multilogin_single(users.length-1);
