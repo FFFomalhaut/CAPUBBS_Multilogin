@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         CAPUBBS Multilogin
 // @namespace    http://tampermonkey.net/
-// @version      1.3
-// @description  分离账号密码数据到本地
+// @version      1.3.1
+// @description  从桌面打开时，若今日已经签到，则不再全部登录。
 // @author       FFFomalhaut
 // @match        https://*.chexie.net/bbs/login/*
 // @icon         https://chexie.net/assets/images/capu.jpg
@@ -28,9 +28,26 @@
 
     window.onload = function() {
         // console.log(window.location.href);
-	var searchParams = new URLSearchParams(window.location.search);
+        var searchParams = new URLSearchParams(window.location.search);
         if (searchParams.get("fromdesktop") == 1) {
-            window.multilogin();
+            $.get("/bbs/sign", (data) => {
+                callback(data);
+            });
+        }
+        function callback(data) {
+            if ( !data.includes("歸塵") ) {
+                window.multilogin();
+            } else {
+                var result = confirm("今天你签到过了！以主账号登录吗？");
+                if (result) {
+                    var [usrn, pswd] = users[0];
+                    $.post("action.php",{
+                        username:usrn,
+                        password1:pswd,
+                    });
+                    window.location=from;
+                }
+            }   
         }
     }
 
@@ -54,9 +71,8 @@
             }).fail(function() {
                 tip.html(usrn+" 登录失败");
                 Multilogin_single(index-1);
-            })
+            });
         }
-
         Multilogin_single(users.length-1);
     }
 
