@@ -47,8 +47,9 @@
                     $.post("action.php",{
                         username:usrn,
                         password1:pswd,
+                    }).done(() => {
+                        window.location=from;
                     });
-                    window.location=from;
                 }
             }   
         }
